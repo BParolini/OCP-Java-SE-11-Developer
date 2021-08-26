@@ -155,5 +155,91 @@ If I have to summarize the differences between `String`, `StringBuffer` and `Str
 
 ## Use local variable type inference, including as lambda parameters
 
+ref.: [Local Variable Type Inference][var]
+
+In JDK 10 and later, you can declare local variables with non-null initializers with the var identifier, which can help you write code that’s easier to read.
+
+Consider the following example, which seems redundant and is hard to read:
+
+```java
+URL url = new URL("http://www.oracle.com/"); 
+URLConnection conn = url.openConnection(); 
+Reader reader = new BufferedReader(
+    new InputStreamReader(conn.getInputStream()));
+```
+
+You can rewrite this example by declaring the local variables with the var identifier. The type of the variables are inferred from the context:
+
+```java
+var url = new URL("http://www.oracle.com/"); 
+var conn = url.openConnection(); 
+var reader = new BufferedReader(
+    new InputStreamReader(conn.getInputStream()));
+```
+
+`var` is a reserved type name, not a keyword, which means that existing code that uses `var` as a variable, method, or package name is not affected. However, code that uses `var` as a class or interface name is affected and the class or interface needs to be renamed.
+
+`var` can be used for the following types of variables:
+
+* Local variable declarations with initializers:
+
+```java
+var list = new ArrayList<String>();    // infers ArrayList<String>
+var stream = list.stream();            // infers Stream<String>
+var path = Paths.get(fileName);        // infers Path
+var bytes = Files.readAllBytes(path);  // infers bytes[]
+```
+
+* Enhanced `for`-loop indexes:
+
+```java
+List<String> myList = Arrays.asList("a", "b", "c");
+for (var element : myList) {...}  // infers String
+```
+
+* Index variables declared in traditional `for` loops:
+
+```java
+for (var counter = 0; counter < 10; counter++)  {...}   // infers int
+```
+
+* `try`-with-resources variable:
+
+```java
+try (var input = 
+     new FileInputStream("validation.txt")) {...}   // infers FileInputStream
+```
+
+* Formal parameter declarations of implicitly typed lambda expressions: A lambda expression whose formal parameters have inferred types is _implicitly_ typed:
+
+```java
+BiFunction<Integer, Integer, Integer> = (a, b) -> a + b;
+```
+
+In JDK 11 and later, you can declare each formal parameter of an implicitly typed lambda expression with the `var` identifier:
+
+```java
+(var a, var b) -> a + b;
+```
+
+As a result, the syntax of a formal parameter declaration in an implicitly typed lambda expression is consistent with the syntax of a local variable declaration; applying the `var` identifier to each formal parameter in an implicitly typed lambda expression has the same effect as not using `var` at all.
+
+You cannot mix inferred formal parameters and `var`-declared formal parameters in implicitly typed lambda expressions nor can you mix `var`-declared formal parameters and manifest types in explicitly typed lambda expressions. The following examples are not permitted:
+
+```java
+(var x, y) -> x.process(y)      // Cannot mix var and inferred formal parameters
+                                // in implicitly typed lambda expressions
+(var x, int y) -> x.process(y)  // Cannot mix var and manifest types
+                                // in explicitly typed lambda expressions
+```
+
+### Local Variable Type Inference Style Guidelines
+
+Local variable declarations can make code more readable by eliminating redundant information. However, it can also make code less readable by omitting useful information. Consequently, use this feature with judgment; no strict rule exists about when it should and shouldn't be used.
+
+Local variable declarations don't exist in isolation; the surrounding code can affect or even overwhelm the effects of `var` declarations. [Style Guidelines for Local Variable Type Inference in Java][var-style-guide] examines the impact that surrounding code has on `var` declarations, explains tradeoffs between explicit and implicit type declarations, and provides guidelines for the effective use of `var` declarations.
+
 [stringarticle]: https://www.edureka.co/blog/string-vs-stringbuffer-vs-stringbuilder/
 [stringpool]: https://www.edureka.co/blog/java-string-pool/
+[var]: https://docs.oracle.com/en/java/javase/11/language/local-variable-type-inference.html
+[var-style-guide]: http://openjdk.java.net/projects/amber/LVTIstyle.html
