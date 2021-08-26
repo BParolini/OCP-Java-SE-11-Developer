@@ -173,4 +173,13 @@ public final class Runner extends Person implements Athlete {}
 
 ## Create and use enumerations
 
+---
+
+[Index][index]  
+[Previous chapter][previous]  
+[Next chapter][next]
+
+[index]: ../README.md
+[previous]: ../01-WorkingWithJavaDataTypes/README.md
+[next]: ../03-WorkingWithArraysAndCollections/README.md
 [objects]: https://livebook.manning.com/book/java-se-11-programmer-i-certification-guide/chapter-3/v-3/2

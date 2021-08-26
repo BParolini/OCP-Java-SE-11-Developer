@@ -239,6 +239,13 @@ Local variable declarations can make code more readable by eliminating redundant
 
 Local variable declarations don't exist in isolation; the surrounding code can affect or even overwhelm the effects of `var` declarations. [Style Guidelines for Local Variable Type Inference in Java][var-style-guide] examines the impact that surrounding code has on `var` declarations, explains tradeoffs between explicit and implicit type declarations, and provides guidelines for the effective use of `var` declarations.
 
+---
+
+[Index][index]  
+[Next chapter][next]
+
+[index]: ../README.md
+[next]: ../02-JavaObject-OrientedApproach/README.md
 [stringarticle]: https://www.edureka.co/blog/string-vs-stringbuffer-vs-stringbuilder/
 [stringpool]: https://www.edureka.co/blog/java-string-pool/
 [var]: https://docs.oracle.com/en/java/javase/11/language/local-variable-type-inference.html
