@@ -1,9 +1,11 @@
 # Oracle Certified Professional Java SE 11 Developer Exam Topics
+
 This repository is filled with my notes while studying for the **[Oracle Certified Professional Java SE 11 Developer exam][ocp]**.
 
 My intention is to make comments on all topics, explain the requested features and give code examples.
 
 ## Exam Topics
+
 1. [Working with Java data types](01-WorkingWithJavaDataTypes/README.md)
 2. [Java Object-Oriented Approach](02-JavaObject-OrientedApproach/README.md)
 3. [Working with Arrays and Collections](03-WorkingWithArraysAndCollections/README.md)
