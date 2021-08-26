@@ -20,7 +20,6 @@ The OCP Java SE 11 Programmer I exam will question you on the structure and comp
 
 ![Class components](img/class_component.jpg)
 
-
 #### Modules
 
 Introduced in Java 9, modules are used to logically group together a set of cohesive packages and the resources they use, like text, video, or image files. A module is described using a module descriptor, which defines its member packages, dependencies, services and others. If not explicitly defined as part of a module, all Java classes and packages become part of an unnamed or default module. A Java class doesn’t include any line of code that identifies it to be part of a specific module. Java modules are covered in detail in chapter 13.
@@ -106,7 +105,7 @@ A comment can precede a package statement.
 
 > Javadoc comments
 >
-> Javadoc comments are special comments that start with `/**` and end with `*/` in a Java source file. These comments are processed by Javadoc, a JDK tool, to generate API documentation for your Java source code files. To see it in action, compare the API documentation of the class `String` (https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html) and its source code file (String.java).
+> Javadoc comments are special comments that start with `/**` and end with `*/` in a Java source file. These comments are processed by Javadoc, a JDK tool, to generate API documentation for your Java source code files. To see it in action, compare the API documentation of the class `String` (<https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>) and its source code file (String.java).
 
 #### Class declaration
 
